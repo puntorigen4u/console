@@ -22,7 +22,7 @@ Sets visibility output
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>Boolean</code> | (required) If true, hides all output |
+| value | <code>Boolean</code> | if true, hides all output |
 
 <a name="module_console+setPrefix"></a>
 

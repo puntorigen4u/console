@@ -15,7 +15,7 @@ export default class Console {
 
 	/**
 	* Sets visibility output
-	* @param 		{Boolean}	value	(required) If true, hides all output
+	* @param 		{Boolean}	value 	- if true, hides all output
 	*/
 	setSilent({ value=this.throwIfMissing('value') }={}) {
 		this.config.silent = value;
