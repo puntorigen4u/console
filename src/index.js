@@ -1,16 +1,10 @@
 /**
-* A module for helping display information in the console
-* @module console
+* A class to help display information in the console
+* @name 	console
+* @module 	console
 **/
 export default class Console {
 
-	/**
-	* Sets initial configuration
-	* @constructor 	
-	* @param 		config {object}	- (optional) defines initial configuration
-	* @param 		[config.silent=false] {boolean} - Starts hiding all output
-	* @param 		[config.prefix] {string} - Prefix for messages shown with methods.
-	*/
 	constructor({ config }={}) {
 		let def_config = {
 			silent:false,
@@ -20,7 +14,7 @@ export default class Console {
 	}
 
 	/**
-	* setSilent 	sets visibility output
+	* Sets visibility output
 	* @param 		{Boolean}	value	(required) If true, hides all output
 	*/
 	setSilent({ value=this.throwIfMissing('value') }={}) {
@@ -28,13 +22,13 @@ export default class Console {
 	}
 
 	/**
-	* setPrefix 	sets output prefix
-	* @param 		{Boolean}	prefix	optional prefix
-	* @param 		{String}	color	optional: black,red,green,yellow,blue,purple,cyan,white
+	* Sets output prefix
+	* @param 		{String}	[prefix]	- prefix
+	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
 	*/
 	setPrefix({ prefix,color }={}) {
 		if (prefix) this.config.prefix=prefix;
-		if (color) {
+		if (color && this.config.prefix!='') {
 			let txt = `[${this.config.prefix}] `;
 			let colors = require('colors/safe');
 			this.config.prefix = colors[color](txt);
@@ -44,7 +38,7 @@ export default class Console {
 	}
 
 	/**
-	* clear 		clears the console screen
+	* Clears the console screen
 	*/
 	clear() {
 		let clearConsole = require('clear-any-console');
@@ -52,10 +46,10 @@ export default class Console {
 	}
 
 	/**
-	* out 			output the argument to the console screen
-	* @param 		{String}	message		message to output
-	* @param 		{Object}	data		optional: var dump to include in output
-	* @param 		{String}	color		optional: black,red,green,yellow,blue,purple,cyan,white
+	* Output a message to the console screen, with an optional var with data
+	* @param 		{String}	message		- message to output
+	* @param 		{Object}	[data]		- var dump to include in output
+	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
 	*/
 	out({ message=this.throwIfMissing('message'),data,color }={}) {
 		let msg = message, colors = require('colors/safe');
@@ -77,10 +71,10 @@ export default class Console {
 	}
 
 	/**
-	* outT 			output the argument to the console screen with timestamp
-	* @param 		{String}	message		message to output
-	* @param 		{Object}	data		optional: var dump to include in output
-	* @param 		{String}	color		optional: black,red,green,yellow,blue,purple,cyan,white
+	* Output a message to the console screen with timestamp, and an optional var with data
+	* @param 		{String}	message		- message to output
+	* @param 		{Object}	[data]		- var dump to include in output
+	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
 	*/
 	outT({ message=this.throwIfMissing('message'),data,color }={}) {
 		let msg = message, colors = require('colors/safe');
@@ -114,11 +108,12 @@ export default class Console {
 	}
 
 	/**
-	* title 		displays the given text as a title
-	* @param 		{String}	title		title to display
-	* @param 		{String}	color		(optional) color for box borders.
-	* @param 		{String}	titleColor	(optional) color for title. If undefined, uses the box color.
-	* @param 		{Object}	config		(optional) config overwrite params for boxen.
+	* Displays the given text as a title
+	* @param 		{String}	title			- title to display
+	* @param 		{String}	[color=white]	- color for box borders.
+	* @param 		{String}	[titleColor]	- color for title. If undefined, uses the box color.
+	* @param 		{Object}	[config]				- config overwrite params for boxen.
+	* @param 		{String} 	[config.align=center]	- aligns the title by its value: left,center,right
 	*/
 
 	title({ title=this.throwIfMissing('title'), color, titleColor, config={} }={}) {
@@ -143,11 +138,11 @@ export default class Console {
 		console.log(resp);
 	}
 	/**
-	* table 		shows data array as table in the console
+	* Shows data array as table in the console
 	* @param 		{String}	title			title for table
 	* @param 		{Array}		data			array of objects for building the table.
-	* @param 		{String}	struct_sort		(optional) sort data before displaying. Supports: field asc/desc.
-	* @param 		{String}	color			(optional) color for table.
+	* @param 		{String}	[struct_sort]	sort data before displaying. Supports: field asc/desc.
+	* @param 		{String}	[color]			color for table.
 	*/
 	table({ title=this.throwIfMissing('title'),data=this.throwIfMissing('data'),struct_sort,color }={}) {
 		let info = data, colors = require('colors/safe');

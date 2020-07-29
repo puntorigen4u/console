@@ -1,118 +1,101 @@
 # Creador OPEN Framework : ES6 Classes
 
 # API Reference
-A module for helping display information in the console
+A class to help display information in the console
 
 
 * [console](#module_console)
-    * [module.exports](#exp_module_console--module.exports) ⏏
-        * [new module.exports(config)](#new_module_console--module.exports_new)
-        * [.setSilent(value)](#module_console--module.exports+setSilent)
-        * [.setPrefix(prefix, color)](#module_console--module.exports+setPrefix)
-        * [.clear()](#module_console--module.exports+clear)
-        * [.out(message, data, color)](#module_console--module.exports+out)
-        * [.outT(message, data, color)](#module_console--module.exports+outT)
-        * [.title(title, color, titleColor, config)](#module_console--module.exports+title)
-        * [.table(title, data, struct_sort, color)](#module_console--module.exports+table)
+    * [.setSilent(value)](#module_console+setSilent)
+    * [.setPrefix([prefix], [color])](#module_console+setPrefix)
+    * [.clear()](#module_console+clear)
+    * [.out(message, [data], [color])](#module_console+out)
+    * [.outT(message, [data], [color])](#module_console+outT)
+    * [.title(title, [color], [titleColor], [config])](#module_console+title)
+    * [.table(title, data, [struct_sort], [color])](#module_console+table)
 
-<a name="exp_module_console--module.exports"></a>
+<a name="module_console+setSilent"></a>
 
-### module.exports ⏏
-**Kind**: Exported class  
-<a name="new_module_console--module.exports_new"></a>
+### console.setSilent(value)
+Sets visibility output
 
-#### new module.exports(config)
-Sets initial configuration
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| config | <code>object</code> |  | (optional) defines initial configuration |
-| [config.silent] | <code>boolean</code> | <code>false</code> | Starts hiding all output |
-| [config.prefix] | <code>string</code> |  | Prefix for messages shown with methods. |
-
-<a name="module_console--module.exports+setSilent"></a>
-
-#### module.exports.setSilent(value)
-setSilent 	sets visibility output
-
-**Kind**: instance method of [<code>module.exports</code>](#exp_module_console--module.exports)  
+**Kind**: instance method of [<code>console</code>](#module_console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | value | <code>Boolean</code> | (required) If true, hides all output |
 
-<a name="module_console--module.exports+setPrefix"></a>
+<a name="module_console+setPrefix"></a>
 
-#### module.exports.setPrefix(prefix, color)
-setPrefix 	sets output prefix
+### console.setPrefix([prefix], [color])
+Sets output prefix
 
-**Kind**: instance method of [<code>module.exports</code>](#exp_module_console--module.exports)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| prefix | <code>Boolean</code> | optional prefix |
-| color | <code>String</code> | optional: black,red,green,yellow,blue,purple,cyan,white |
-
-<a name="module_console--module.exports+clear"></a>
-
-#### module.exports.clear()
-clear 		clears the console screen
-
-**Kind**: instance method of [<code>module.exports</code>](#exp_module_console--module.exports)  
-<a name="module_console--module.exports+out"></a>
-
-#### module.exports.out(message, data, color)
-out 			output the argument to the console screen
-
-**Kind**: instance method of [<code>module.exports</code>](#exp_module_console--module.exports)  
+**Kind**: instance method of [<code>console</code>](#module_console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | <code>String</code> | message to output |
-| data | <code>Object</code> | optional: var dump to include in output |
-| color | <code>String</code> | optional: black,red,green,yellow,blue,purple,cyan,white |
+| [prefix] | <code>String</code> | prefix |
+| [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_console--module.exports+outT"></a>
+<a name="module_console+clear"></a>
 
-#### module.exports.outT(message, data, color)
-outT 			output the argument to the console screen with timestamp
+### console.clear()
+Clears the console screen
 
-**Kind**: instance method of [<code>module.exports</code>](#exp_module_console--module.exports)  
+**Kind**: instance method of [<code>console</code>](#module_console)  
+<a name="module_console+out"></a>
+
+### console.out(message, [data], [color])
+Output a message to the console screen, with an optional var with data
+
+**Kind**: instance method of [<code>console</code>](#module_console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | message | <code>String</code> | message to output |
-| data | <code>Object</code> | optional: var dump to include in output |
-| color | <code>String</code> | optional: black,red,green,yellow,blue,purple,cyan,white |
+| [data] | <code>Object</code> | var dump to include in output |
+| [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_console--module.exports+title"></a>
+<a name="module_console+outT"></a>
 
-#### module.exports.title(title, color, titleColor, config)
-title 		displays the given text as a title
+### console.outT(message, [data], [color])
+Output a message to the console screen with timestamp, and an optional var with data
 
-**Kind**: instance method of [<code>module.exports</code>](#exp_module_console--module.exports)  
+**Kind**: instance method of [<code>console</code>](#module_console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| title | <code>String</code> | title to display |
-| color | <code>String</code> | (optional) color for box borders. |
-| titleColor | <code>String</code> | (optional) color for title. If undefined, uses the box color. |
-| config | <code>Object</code> | (optional) config overwrite params for boxen. |
+| message | <code>String</code> | message to output |
+| [data] | <code>Object</code> | var dump to include in output |
+| [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_console--module.exports+table"></a>
+<a name="module_console+title"></a>
 
-#### module.exports.table(title, data, struct_sort, color)
-table 		shows data array as table in the console
+### console.title(title, [color], [titleColor], [config])
+Displays the given text as a title
 
-**Kind**: instance method of [<code>module.exports</code>](#exp_module_console--module.exports)  
+**Kind**: instance method of [<code>console</code>](#module_console)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| title | <code>String</code> |  | title to display |
+| [color] | <code>String</code> | <code>white</code> | color for box borders. |
+| [titleColor] | <code>String</code> |  | color for title. If undefined, uses the box color. |
+| [config] | <code>Object</code> |  | config overwrite params for boxen. |
+| [config.align] | <code>String</code> | <code>center</code> | aligns the title by its value: left,center,right |
+
+<a name="module_console+table"></a>
+
+### console.table(title, data, [struct_sort], [color])
+Shows data array as table in the console
+
+**Kind**: instance method of [<code>console</code>](#module_console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | title | <code>String</code> | title for table |
 | data | <code>Array</code> | array of objects for building the table. |
-| struct_sort | <code>String</code> | (optional) sort data before displaying. Supports: field asc/desc. |
-| color | <code>String</code> | (optional) color for table. |
+| [struct_sort] | <code>String</code> | sort data before displaying. Supports: field asc/desc. |
+| [color] | <code>String</code> | color for table. |
 
 
 * * *
