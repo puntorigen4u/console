@@ -1,9 +1,8 @@
-name: JSDoc
+name: JSDoc2
 # This workflow is triggered on pushes to the repository.
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
