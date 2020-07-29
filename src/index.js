@@ -1,5 +1,5 @@
 /**
-* A class to help display information in the console
+* Console: A class to help display information in the console
 * @name 	console
 * @module 	console
 **/
