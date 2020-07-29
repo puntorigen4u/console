@@ -3,6 +3,10 @@
 .idea
 icon.png
 
+# Github keys
+gh-pages
+gh-pages.sub
+
 # Logs
 logs
 *.log
