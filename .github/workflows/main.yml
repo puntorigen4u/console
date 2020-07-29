@@ -1,8 +1,6 @@
 name: JSDoc2
 # This workflow is triggered on pushes to the repository.
-on:
-  push:
-    branches: [ main ]
+on: [push]
 
 jobs:
   build:
@@ -29,3 +27,4 @@ jobs:
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./out
+          publish_branch: master
