@@ -24,7 +24,7 @@
   "scripts": {
     "clean": "rimraf ./coverage ./lib",
     "dev": "cross-env NODE_ENV=development rollup -c -o lib/index.js",
-    "build": "cross-env NODE_ENV=production rollup -c -o lib/index.js",
+    "build": "cross-env NODE_ENV=production rollup -c -o lib/index.js && npm run docs",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "test:cover": "cross-env NODE_ENV=test jest --coverage",
@@ -33,6 +33,7 @@
     "flow-typed": "npm run clean && flow-typed install --overwrite || true",
     "lint": "eslint src",
     "prepublish": "npm run clean && npm run test && npm run flow && npm run lint && npm run build",
+    "docs": "jsdoc2md -t README.hbs src/*.js > README.md"
   },
   "dependencies": {
     "ansicolor": "^1.1.93",
@@ -41,6 +42,7 @@
     "boxen": "^4.2.0",
     "clear-any-console": "^1.16.1",
     "colors": "^1.4.0",
+    "jsdoc-to-markdown": "^6.0.1",
     "sort-objects-array": "^1.7.1"
   },
   "devDependencies": {
