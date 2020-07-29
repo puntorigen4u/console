@@ -4,6 +4,13 @@
 **/
 export default class Console {
 
+	/**
+	* Sets initial configuration
+	* @constructor 	
+	* @param 		config {object}	- (optional) defines initial configuration
+	* @param 		[config.silent=false] {boolean} - Starts hiding all output
+	* @param 		[config.prefix] {string} - Prefix for messages shown with methods.
+	*/
 	constructor({ config }={}) {
 		let def_config = {
 			silent:false,
