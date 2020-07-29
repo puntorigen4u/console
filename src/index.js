@@ -1,4 +1,7 @@
-// Commonly used console helper methods.
+/**
+* A module for helping display information in the console
+* @module console
+**/
 export default class Console {
 
 	constructor({ config }={}) {
