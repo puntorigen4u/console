@@ -1,6 +1,6 @@
 {
   "name": "console2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Punto Origen - ES6 Console Class",
   "keywords": [
     "creador",
@@ -38,6 +38,7 @@
     "ansicolor": "^1.1.93",
     "ascii-table": "0.0.9",
     "babel-runtime": "^6.26.0",
+    "boxen": "^4.2.0",
     "clear-any-console": "^1.16.1",
     "colors": "^1.4.0",
     "sort-objects-array": "^1.7.1"

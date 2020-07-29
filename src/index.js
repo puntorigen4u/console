@@ -33,11 +33,20 @@ export default class Console {
 		}
 	}
 
+	/**
+	* clear 		clears the console screen
+	*/
 	clear() {
 		let clearConsole = require('clear-any-console');
 		clearConsole();
 	}
 
+	/**
+	* out 			output the argument to the console screen
+	* @param 		{String}	message		message to output
+	* @param 		{Object}	data		optional: var dump to include in output
+	* @param 		{String}	color		optional: black,red,green,yellow,blue,purple,cyan,white
+	*/
 	out({ message=this.throwIfMissing('message'),data,color }={}) {
 		let msg = message, colors = require('colors/safe');
 		if (!this.config.silent) {
@@ -57,6 +66,12 @@ export default class Console {
 		}
 	}
 
+	/**
+	* outT 			output the argument to the console screen with timestamp
+	* @param 		{String}	message		message to output
+	* @param 		{Object}	data		optional: var dump to include in output
+	* @param 		{String}	color		optional: black,red,green,yellow,blue,purple,cyan,white
+	*/
 	outT({ message=this.throwIfMissing('message'),data,color }={}) {
 		let msg = message, colors = require('colors/safe');
 		if (!this.config.silent) {
@@ -89,6 +104,35 @@ export default class Console {
 	}
 
 	/**
+	* title 		displays the given text as a title
+	* @param 		{String}	title		title to display
+	* @param 		{String}	color		(optional) color for box borders.
+	* @param 		{String}	titleColor	(optional) color for title. If undefined, uses the box color.
+	* @param 		{Object}	config		(optional) config overwrite params for boxen.
+	*/
+
+	title({ title=this.throwIfMissing('title'), color, titleColor, config={} }={}) {
+		const box = require('boxen'), colors = require('colors/safe');
+		let textc = (titleColor)?titleColor:color;
+		let resp = box(colors[textc](title),{
+			borderColor:color,
+			align:'center',
+			padding: {
+	    		left:2,
+	    		right:2
+	    	},
+	    	borderStyle: {
+	    		topLeft: '*',
+	    		topRight: '*',
+	    		bottomLeft: '*',
+	    		bottomRight: '*',
+	    		horizontal: '*',
+	    		vertical: '*'
+	    	}
+		,...config});
+		console.log(resp);
+	}
+	/**
 	* table 		shows data array as table in the console
 	* @param 		{String}	title			title for table
 	* @param 		{Array}		data			array of objects for building the table.
@@ -96,7 +140,7 @@ export default class Console {
 	* @param 		{String}	color			(optional) color for table.
 	*/
 	table({ title=this.throwIfMissing('title'),data=this.throwIfMissing('data'),struct_sort,color }={}) {
-		let info = data, colors = require('colors/safe');;
+		let info = data, colors = require('colors/safe');
 		if (struct_sort) {
 			let sortObjectsArray = require('sort-objects-array');
 			if (struct_sort.split(' ').length>1) {
