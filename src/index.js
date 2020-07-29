@@ -88,6 +88,45 @@ export default class Console {
 		}
 	}
 
+	/**
+	* table 		shows data array as table in the console
+	* @param 		{String}	title			title for table
+	* @param 		{Array}		data			array of objects for building the table.
+	* @param 		{String}	struct_sort		(optional) sort data before displaying. Supports: field asc/desc.
+	* @param 		{String}	color			(optional) color for table.
+	*/
+	table({ title=this.throwIfMissing('title'),data=this.throwIfMissing('data'),struct_sort,color }={}) {
+		let info = data, colors = require('colors/safe');;
+		if (struct_sort) {
+			let sortObjectsArray = require('sort-objects-array');
+			if (struct_sort.split(' ').length>1) {
+				// field desc, field asc
+				info = sortObjectsArray(data, struct_sort.split(' ')[0], struct_sort.split(' ')[1]);
+			} else {
+				info = sortObjectsArray(data, struct_sort);
+			}
+		}
+		let asciiTable = require('ascii-table');
+		let table = new asciiTable(title);
+		// heading
+		let cols = Object.keys(info[0]);
+		table.setHeading(cols);
+		// data
+		for (let row in info) {
+			let jdata = [];
+			for (let col in cols) {
+				jdata.push(info[row][cols[col]]);
+			}
+			table.addRow(jdata).setJustify(true);
+ 		}
+		//
+		if (color) {
+			console.log(colors[color](table.render()));
+		} else {
+			console.log(table.toString());
+		}
+	}
+
 	// ********************
 	// private methods
 	// ********************

@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "ansicolor": "^1.1.93",
-    "as-table": "^1.0.55",
+    "ascii-table": "0.0.9",
     "babel-runtime": "^6.26.0",
     "clear-any-console": "^1.16.1",
     "colors": "^1.4.0",
