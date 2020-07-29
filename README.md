@@ -1,7 +1,7 @@
 # Creador OPEN Framework : ES6 Classes
 
 # API Reference
-Console: A class to help display information in the console
+Console: A class to help display information in the console.<br/>Note: You need to pass all arguments as an Object with keys.
 
 
 * [console](#module_console)
