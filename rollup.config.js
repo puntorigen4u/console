@@ -11,7 +11,7 @@ const config = {
   external: [],
   output: {
     format: 'umd',
-    name: 'npmPackageES6DSLparser',
+    name: 'npmPackageES6console',
     sourcemap: 'inline'
   },
 

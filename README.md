@@ -1,53 +1,53 @@
-# Creador OPEN Framework : ES6 Classes
+# Punto Origen OPEN Framework : ES6 Classes
 
 # API Reference
 Console: A class to help display information in the console.<br/>Note: You need to pass all arguments as an Object with keys.
 
 
-* [console](#module_console)
-    * [.setSilent(value)](#module_console+setSilent)
-    * [.setPrefix([prefix], [color])](#module_console+setPrefix)
-    * [.clear()](#module_console+clear)
-    * [.out(message, [data], [color])](#module_console+out)
-    * [.outT(message, [data], [color])](#module_console+outT)
-    * [.title(title, [color], [titleColor], [config])](#module_console+title)
-    * [.table(title, data, [struct_sort], [color])](#module_console+table)
+* [Console](#module_Console)
+    * [.setSilent(value)](#module_Console+setSilent)
+    * [.setPrefix([prefix], [color])](#module_Console+setPrefix)
+    * [.clear()](#module_Console+clear)
+    * [.out(message, [data], [color])](#module_Console+out)
+    * [.outT(message, [data], [color])](#module_Console+outT)
+    * [.title(title, [color], [titleColor], [config])](#module_Console+title)
+    * [.table(title, data, [struct_sort], [color])](#module_Console+table)
 
-<a name="module_console+setSilent"></a>
+<a name="module_Console+setSilent"></a>
 
 ### console.setSilent(value)
 Sets visibility output
 
-**Kind**: instance method of [<code>console</code>](#module_console)  
+**Kind**: instance method of [<code>Console</code>](#module_Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | value | <code>Boolean</code> | if true, hides all output |
 
-<a name="module_console+setPrefix"></a>
+<a name="module_Console+setPrefix"></a>
 
 ### console.setPrefix([prefix], [color])
 Sets output prefix
 
-**Kind**: instance method of [<code>console</code>](#module_console)  
+**Kind**: instance method of [<code>Console</code>](#module_Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | [prefix] | <code>String</code> | prefix |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_console+clear"></a>
+<a name="module_Console+clear"></a>
 
 ### console.clear()
 Clears the console screen
 
-**Kind**: instance method of [<code>console</code>](#module_console)  
-<a name="module_console+out"></a>
+**Kind**: instance method of [<code>Console</code>](#module_Console)  
+<a name="module_Console+out"></a>
 
 ### console.out(message, [data], [color])
 Output a message to the console screen, with an optional var with data
 
-**Kind**: instance method of [<code>console</code>](#module_console)  
+**Kind**: instance method of [<code>Console</code>](#module_Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -55,12 +55,12 @@ Output a message to the console screen, with an optional var with data
 | [data] | <code>Object</code> | var dump to include in output |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_console+outT"></a>
+<a name="module_Console+outT"></a>
 
 ### console.outT(message, [data], [color])
 Output a message to the console screen with timestamp, and an optional var with data
 
-**Kind**: instance method of [<code>console</code>](#module_console)  
+**Kind**: instance method of [<code>Console</code>](#module_Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -68,12 +68,12 @@ Output a message to the console screen with timestamp, and an optional var with 
 | [data] | <code>Object</code> | var dump to include in output |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_console+title"></a>
+<a name="module_Console+title"></a>
 
 ### console.title(title, [color], [titleColor], [config])
 Displays the given text as a title
 
-**Kind**: instance method of [<code>console</code>](#module_console)  
+**Kind**: instance method of [<code>Console</code>](#module_Console)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -83,12 +83,12 @@ Displays the given text as a title
 | [config] | <code>Object</code> |  | config overwrite params for boxen. |
 | [config.align] | <code>String</code> | <code>center</code> | aligns the title by its value: left,center,right |
 
-<a name="module_console+table"></a>
+<a name="module_Console+table"></a>
 
 ### console.table(title, data, [struct_sort], [color])
 Shows data array as table in the console
 
-**Kind**: instance method of [<code>console</code>](#module_console)  
+**Kind**: instance method of [<code>Console</code>](#module_Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
