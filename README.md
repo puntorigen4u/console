@@ -5,49 +5,67 @@ Console: A class to help display information in the console.<br/>Note: You need 
 
 
 * [Console](#module_Console)
-    * [.setSilent(value)](#module_Console+setSilent)
-    * [.setPrefix([prefix], [color])](#module_Console+setPrefix)
-    * [.clear()](#module_Console+clear)
-    * [.out(message, [data], [color])](#module_Console+out)
-    * [.outT(message, [data], [color])](#module_Console+outT)
-    * [.title(title, [color], [titleColor], [config])](#module_Console+title)
-    * [.table(title, data, [struct_sort], [color])](#module_Console+table)
+    * [Console](#exp_module_Console--Console) ⏏
+        * [new Console(config)](#new_module_Console--Console_new)
+        * [.setSilent(value)](#module_Console--Console+setSilent)
+        * [.setPrefix([prefix], [color])](#module_Console--Console+setPrefix)
+        * [.clear()](#module_Console--Console+clear)
+        * [.out(message, [data], [color])](#module_Console--Console+out)
+        * [.outT(message, [data], [color])](#module_Console--Console+outT)
+        * [.title(title, [color], [titleColor], [config])](#module_Console--Console+title)
+        * [.table(title, data, [struct_sort], [color])](#module_Console--Console+table)
 
-<a name="module_Console+setSilent"></a>
+<a name="exp_module_Console--Console"></a>
 
-### console.setSilent(value)
+### Console ⏏
+**Kind**: Exported class  
+<a name="new_module_Console--Console_new"></a>
+
+#### new Console(config)
+Sets initial configuration
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| config | <code>object</code> |  | (optional) defines initial configuration |
+| [config.silent] | <code>boolean</code> | <code>false</code> | Starts hiding all output |
+| [config.prefix] | <code>string</code> |  | Prefix for messages shown with methods. |
+
+<a name="module_Console--Console+setSilent"></a>
+
+#### Console.setSilent(value)
 Sets visibility output
 
-**Kind**: instance method of [<code>Console</code>](#module_Console)  
+**Kind**: instance method of [<code>Console</code>](#exp_module_Console--Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | value | <code>Boolean</code> | if true, hides all output |
 
-<a name="module_Console+setPrefix"></a>
+<a name="module_Console--Console+setPrefix"></a>
 
-### console.setPrefix([prefix], [color])
+#### Console.setPrefix([prefix], [color])
 Sets output prefix
 
-**Kind**: instance method of [<code>Console</code>](#module_Console)  
+**Kind**: instance method of [<code>Console</code>](#exp_module_Console--Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | [prefix] | <code>String</code> | prefix |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_Console+clear"></a>
+<a name="module_Console--Console+clear"></a>
 
-### console.clear()
+#### Console.clear()
 Clears the console screen
 
-**Kind**: instance method of [<code>Console</code>](#module_Console)  
-<a name="module_Console+out"></a>
+**Kind**: instance method of [<code>Console</code>](#exp_module_Console--Console)  
+<a name="module_Console--Console+out"></a>
 
-### console.out(message, [data], [color])
+#### Console.out(message, [data], [color])
 Output a message to the console screen, with an optional var with data
 
-**Kind**: instance method of [<code>Console</code>](#module_Console)  
+**Kind**: instance method of [<code>Console</code>](#exp_module_Console--Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -55,12 +73,12 @@ Output a message to the console screen, with an optional var with data
 | [data] | <code>Object</code> | var dump to include in output |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_Console+outT"></a>
+<a name="module_Console--Console+outT"></a>
 
-### console.outT(message, [data], [color])
+#### Console.outT(message, [data], [color])
 Output a message to the console screen with timestamp, and an optional var with data
 
-**Kind**: instance method of [<code>Console</code>](#module_Console)  
+**Kind**: instance method of [<code>Console</code>](#exp_module_Console--Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -68,12 +86,12 @@ Output a message to the console screen with timestamp, and an optional var with 
 | [data] | <code>Object</code> | var dump to include in output |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 
-<a name="module_Console+title"></a>
+<a name="module_Console--Console+title"></a>
 
-### console.title(title, [color], [titleColor], [config])
+#### Console.title(title, [color], [titleColor], [config])
 Displays the given text as a title
 
-**Kind**: instance method of [<code>Console</code>](#module_Console)  
+**Kind**: instance method of [<code>Console</code>](#exp_module_Console--Console)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -83,12 +101,12 @@ Displays the given text as a title
 | [config] | <code>Object</code> |  | config overwrite params for boxen. |
 | [config.align] | <code>String</code> | <code>center</code> | aligns the title by its value: left,center,right |
 
-<a name="module_Console+table"></a>
+<a name="module_Console--Console+table"></a>
 
-### console.table(title, data, [struct_sort], [color])
+#### Console.table(title, data, [struct_sort], [color])
 Shows data array as table in the console
 
-**Kind**: instance method of [<code>Console</code>](#module_Console)  
+**Kind**: instance method of [<code>Console</code>](#exp_module_Console--Console)  
 
 | Param | Type | Description |
 | --- | --- | --- |
