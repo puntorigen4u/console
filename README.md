@@ -6,6 +6,8 @@ Open_console: A class to help display information in the console.<br/><small>Not
 
 * [open_console](#module_open_console)
     * [.setSilent(value)](#module_open_console+setSilent)
+    * [.time(id)](#module_open_console+time)
+    * [.timeEnd(id)](#module_open_console+timeEnd)
     * [.setPrefix([prefix], [color])](#module_open_console+setPrefix)
     * [.clear()](#module_open_console+clear)
     * [.out(message, [data], [color])](#module_open_console+out)
@@ -23,6 +25,28 @@ Sets visibility output
 | Param | Type | Description |
 | --- | --- | --- |
 | value | <code>Boolean</code> | if true, hides all output |
+
+<a name="module_open_console+time"></a>
+
+### open_console.time(id)
+Calls timer start
+
+**Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>String</code> | key ID to measure |
+
+<a name="module_open_console+timeEnd"></a>
+
+### open_console.timeEnd(id)
+Calls timer end
+
+**Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>String</code> | key ID to measure and show timming for. |
 
 <a name="module_open_console+setPrefix"></a>
 

@@ -21,6 +21,22 @@ export default class open_console {
 	}
 
 	/**
+	* Calls timer start
+	* @param 		{String}	id 	- key ID to measure
+	*/
+	time({ id=this.throwIfMissing('id') }={}) {
+		console.time(id);
+	}
+
+	/**
+	* Calls timer end
+	* @param 		{String}	id 	- key ID to measure and show timming for.
+	*/
+	timeEnd({ id=this.throwIfMissing('id') }={}) {
+		console.timeEnd(id);
+	}
+
+	/**
 	* Sets output prefix
 	* @param 		{String}	[prefix]	- prefix
 	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
