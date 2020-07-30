@@ -41,8 +41,10 @@ export default class open_console {
 	* Clears the console screen
 	*/
 	clear() {
-		let clearConsole = require('clear-any-console');
-		clearConsole();
+		if (!this.config.silent) {
+			let clearConsole = require('clear-any-console');
+			clearConsole();
+		}
 	}
 
 	/**
@@ -117,25 +119,27 @@ export default class open_console {
 	*/
 
 	title({ title=this.throwIfMissing('title'), color, titleColor, config={} }={}) {
-		const box = require('boxen'), colors = require('colors/safe');
-		let textc = (titleColor)?titleColor:color;
-		let resp = box(colors[textc](title),{
-			borderColor:color,
-			align:'center',
-			padding: {
-	    		left:2,
-	    		right:2
-	    	},
-	    	borderStyle: {
-	    		topLeft: '*',
-	    		topRight: '*',
-	    		bottomLeft: '*',
-	    		bottomRight: '*',
-	    		horizontal: '*',
-	    		vertical: '*'
-	    	}
-		,...config});
-		console.log(resp);
+		if (!this.config.silent) {
+			const box = require('boxen'), colors = require('colors/safe');
+			let textc = (titleColor)?titleColor:color;
+			let resp = box(colors[textc](title),{
+				borderColor:color,
+				align:'center',
+				padding: {
+		    		left:2,
+		    		right:2
+		    	},
+		    	borderStyle: {
+		    		topLeft: '*',
+		    		topRight: '*',
+		    		bottomLeft: '*',
+		    		bottomRight: '*',
+		    		horizontal: '*',
+		    		vertical: '*'
+		    	}
+			,...config});
+			console.log(resp);
+		}
 	}
 	/**
 	* Shows data array as table in the console
@@ -145,34 +149,36 @@ export default class open_console {
 	* @param 		{String}	[color]			color for table.
 	*/
 	table({ title=this.throwIfMissing('title'),data=this.throwIfMissing('data'),struct_sort,color }={}) {
-		let info = data, colors = require('colors/safe');
-		if (struct_sort) {
-			let sortObjectsArray = require('sort-objects-array');
-			if (struct_sort.split(' ').length>1) {
-				// field desc, field asc
-				info = sortObjectsArray(data, struct_sort.split(' ')[0], struct_sort.split(' ')[1]);
+		if (!this.config.silent) {
+			let info = data, colors = require('colors/safe');
+			if (struct_sort) {
+				let sortObjectsArray = require('sort-objects-array');
+				if (struct_sort.split(' ').length>1) {
+					// field desc, field asc
+					info = sortObjectsArray(data, struct_sort.split(' ')[0], struct_sort.split(' ')[1]);
+				} else {
+					info = sortObjectsArray(data, struct_sort);
+				}
+			}
+			let asciiTable = require('ascii-table');
+			let table = new asciiTable(title);
+			// heading
+			let cols = Object.keys(info[0]);
+			table.setHeading(cols);
+			// data
+			for (let row in info) {
+				let jdata = [];
+				for (let col in cols) {
+					jdata.push(info[row][cols[col]]);
+				}
+				table.addRow(jdata).setJustify(true);
+	 		}
+			//
+			if (color) {
+				console.log(colors[color](table.render()));
 			} else {
-				info = sortObjectsArray(data, struct_sort);
+				console.log(table.toString());
 			}
-		}
-		let asciiTable = require('ascii-table');
-		let table = new asciiTable(title);
-		// heading
-		let cols = Object.keys(info[0]);
-		table.setHeading(cols);
-		// data
-		for (let row in info) {
-			let jdata = [];
-			for (let col in cols) {
-				jdata.push(info[row][cols[col]]);
-			}
-			table.addRow(jdata).setJustify(true);
- 		}
-		//
-		if (color) {
-			console.log(colors[color](table.render()));
-		} else {
-			console.log(table.toString());
 		}
 	}
 
