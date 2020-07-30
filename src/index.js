@@ -5,12 +5,11 @@
 **/
 export default class open_console {
 
-	constructor({ config }={}) {
-		let def_config = {
-			silent:false,
-			prefix:''
+	constructor({ silent=false, prefix='' }={}) {
+		this.config = {
+			silent:silent,
+			prefix:prefix
 		};
-		this.config = {...config, ...def_config};
 	}
 
 	/**

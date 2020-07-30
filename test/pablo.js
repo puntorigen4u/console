@@ -1,8 +1,8 @@
-const Console = require('../lib/index');
+const console_ = require('../lib/index');
 
 (async () => {
     // testing code here
-    let display = new Console();
+    let display = new console_({ silent:false });
     //
     display.clear();
     display.title({ title:'Concepto DSL: compile pix/vue.dsl', color:'green' });
