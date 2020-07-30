@@ -42,7 +42,6 @@
     "boxen": "^4.2.0",
     "clear-any-console": "^1.16.1",
     "colors": "^1.4.0",
-    "jsdoc-to-markdown": "^6.0.1",
     "sort-objects-array": "^1.7.1"
   },
   "devDependencies": {
@@ -71,6 +70,7 @@
     "rollup-plugin-commonjs": "9.1.0",
     "rollup-plugin-node-resolve": "3.3.0",
     "rollup-plugin-replace": "2.0.0",
-    "rollup-plugin-uglify": "3.0.0"
+    "rollup-plugin-uglify": "3.0.0",
+    "jsdoc-to-markdown": "^6.0.1"
   }
 }
