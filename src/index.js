@@ -68,17 +68,17 @@ export default class open_console {
 	* @param 		{Object}	[data]		- var dump to include in output
 	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
 	*/
-	out({ message=this.throwIfMissing('message'),data,color }={}) {
+	out({ message=this.throwIfMissing('message'),data,color='white' }={}) {
 		let msg = message, colors = require('colors/safe');
 		if (!this.config.silent) {
-			if (color && msg!='') {
+			if (msg.indexOf('error:')!=-1) {
+				console.error(this.config.prefix + colors.red(msg));
+			} else if (msg!='') {
 				if (color in colors) {
 					console.log(this.config.prefix + colors[color](msg));
 				} else {
 					console.log(this.config.prefix + msg);
 				}
-			} else if (msg.indexOf('error:')!=-1) {
-				console.error(this.config.prefix + colors.red(msg));
 			}
 			// data output
 			if (data) {
@@ -93,7 +93,7 @@ export default class open_console {
 	* @param 		{Object}	[data]		- var dump to include in output
 	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
 	*/
-	outT({ message=this.throwIfMissing('message'),data,color }={}) {
+	outT({ message=this.throwIfMissing('message'),data,color='white' }={}) {
 		let msg = message, colors = require('colors/safe');
 		if (!this.config.silent) {
 			// timestamp prefix

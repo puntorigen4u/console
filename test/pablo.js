@@ -7,7 +7,9 @@ const console_ = require('../lib/index');
     display.clear();
     display.title({ title:'Concepto DSL: compile pix/vue.dsl', color:'green' });
     display.setPrefix({ prefix:'conceptojs', color:'yellow' });
-    display.outT({ message:'Hola', color:'cyan', data:{ nom:'Pablo' } });
+    display.outT({ message:'Hola solo' });
+    display.outT({ message:'Hola con color', color:'cyan' });
+    display.outT({ message:'Hola con color y data', color:'cyan', data:{ nom:'Pablo' } });
     display.outT({ message:'error:testing' });
     let info = [
     	{ firstName:'John', 	lastName:'Doe', 	age:20 },
