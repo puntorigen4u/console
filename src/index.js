@@ -1,9 +1,9 @@
 /**
-* Console: A class to help display information in the console.<br/><small>Note: You need to pass all arguments as an Object with keys.</small>
-* @name 	console
-* @module 	console
+* Open_console: A class to help display information in the console.<br/><small>Note: You need to pass all arguments as an Object with keys.</small>
+* @name 	open_console
+* @module 	open_console
 **/
-export default class console {
+export default class open_console {
 
 	constructor({ config }={}) {
 		let def_config = {
