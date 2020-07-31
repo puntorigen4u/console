@@ -10,6 +10,9 @@ export default class open_console {
 			silent:silent,
 			prefix:prefix
 		};
+		if (this.config.prefix!='') {
+			this.config.prefix = `[${this.config.prefix}] `;
+		}
 	}
 
 	/**
