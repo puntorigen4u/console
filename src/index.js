@@ -5,11 +5,19 @@
 **/
 export default class open_console {
 
-	constructor({ silent=false, prefix='' }={}) {
-		this.config = {
+	constructor({ silent=false, prefix='', config={} }={}) {
+		let def_config = {
 			silent:silent,
-			prefix:prefix
+			prefix:prefix,
+			console: {
+				log:console.log,
+				error:console.error,
+				time:console.time,
+				timeEnd:console.timeEnd,
+				default:true
+			}
 		};
+		this.config = {...def_config,...config};
 		if (this.config.prefix!='') {
 			this.config.prefix = `[${this.config.prefix}] `;
 		}
@@ -28,7 +36,8 @@ export default class open_console {
 	* @param 		{String}	id 	- key ID to measure
 	*/
 	time({ id=this.throwIfMissing('id') }={}) {
-		console.time(id);
+		this.config.console.time(id);
+		//console.time(id);
 	}
 
 	/**
@@ -36,7 +45,8 @@ export default class open_console {
 	* @param 		{String}	id 	- key ID to measure and show timming for.
 	*/
 	timeEnd({ id=this.throwIfMissing('id') }={}) {
-		console.timeEnd(id);
+		this.config.console.timeEnd(id);
+		//console.timeEnd(id);
 	}
 
 	/**
@@ -59,7 +69,7 @@ export default class open_console {
 	* Clears the console screen
 	*/
 	clear() {
-		if (!this.config.silent) {
+		if (!this.config.silent && this.config.console.default) {
 			let clearConsole = require('clear-any-console');
 			clearConsole();
 		}
@@ -75,17 +85,17 @@ export default class open_console {
 		let msg = message, colors = require('colors/safe');
 		if (!this.config.silent) {
 			if (msg.indexOf('error:')!=-1) {
-				console.error(this.config.prefix + colors.red(msg));
+				this.config.console.error(this.config.prefix + colors.red(msg));
 			} else if (msg!='') {
 				if (color in colors) {
-					console.log(this.config.prefix + colors[color](msg));
+					this.config.console.log(this.config.prefix + colors[color](msg));
 				} else {
-					console.log(this.config.prefix + msg);
+					this.config.console.log(this.config.prefix + msg);
 				}
 			}
 			// data output
 			if (data) {
-				console.log('console.out():var=',data);
+				this.config.console.log('console.out():var=',data);
 			}
 		}
 	}
@@ -156,7 +166,7 @@ export default class open_console {
 		    		vertical: '*'
 		    	}
 			,...config});
-			console.log(resp);
+			this.config.console.log(resp);
 		}
 	}
 	/**
@@ -193,9 +203,9 @@ export default class open_console {
 	 		}
 			//
 			if (color) {
-				console.log(colors[color](table.render()));
+				this.config.console.log(colors[color](table.render()));
 			} else {
-				console.log(table.toString());
+				this.config.console.log(table.toString());
 			}
 		}
 	}
