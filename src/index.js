@@ -9,6 +9,7 @@ export default class open_console {
 		let def_config = {
 			silent:silent,
 			prefix:prefix,
+			colors:true,
 			console: {
 				log:console.log,
 				error:console.error,
@@ -56,7 +57,7 @@ export default class open_console {
 	*/
 	setPrefix({ prefix,color }={}) {
 		if (prefix) this.config.prefix=prefix;
-		if (color && this.config.prefix!='') {
+		if (color && this.config.prefix!='' && this.config.colors) {
 			let txt = `[${this.config.prefix}] `;
 			let colors = require('colors/safe');
 			this.config.prefix = colors[color](txt);
@@ -84,10 +85,10 @@ export default class open_console {
 	out({ message=this.throwIfMissing('message'),data,color='white' }={}) {
 		let msg = message, colors = require('colors/safe');
 		if (!this.config.silent) {
-			if (msg.indexOf('error:')!=-1) {
+			if (this.config.colors && msg.indexOf('error:')!=-1) {
 				this.config.console.error(this.config.prefix + colors.red(msg));
 			} else if (msg!='') {
-				if (color in colors) {
+				if (this.config.colors && color in colors) {
 					this.config.console.log(this.config.prefix + colors[color](msg));
 				} else {
 					this.config.console.log(this.config.prefix + msg);
@@ -125,11 +126,11 @@ export default class open_console {
 			}
 			let timeStamp = `[${hr}:${min}:${sec}]: ${msg.trim()}`;
 			// output
-			if (data && color) {
+			if (this.config.colors && data && color) {
 				this.out({ message:timeStamp, data:data, color:color });
 			} else if (data) {
 				this.out({ message:timeStamp, data:data });
-			} else if (color) {
+			} else if (this.config.colors && color) {
 				this.out({ message:timeStamp, color:color });
 			} else {
 				this.out({ message:timeStamp });
@@ -166,6 +167,11 @@ export default class open_console {
 		    		vertical: '*'
 		    	}
 			,...config});
+			if (!this.config.colors) {
+				// remove colors from title if requested by config
+				let stripAnsi = require('strip-ansi');
+				resp = stripAnsi(resp);
+			}
 			this.config.console.log(resp);
 		}
 	}
@@ -202,7 +208,7 @@ export default class open_console {
 				table.addRow(jdata).setJustify(true);
 	 		}
 			//
-			if (color) {
+			if (this.config.colors && color) {
 				this.config.console.log(colors[color](table.render()));
 			} else {
 				this.config.console.log(table.toString());

@@ -1,6 +1,6 @@
 {
   "name": "open_console",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Punto Origen OPEN - ES6 Console Class",
   "keywords": [
     "creador",
@@ -42,7 +42,8 @@
     "boxen": "^4.2.0",
     "clear-any-console": "^1.16.1",
     "colors": "^1.4.0",
-    "sort-objects-array": "^1.7.1"
+    "sort-objects-array": "^1.7.1",
+    "strip-ansi": "^6.0.0"
   },
   "devDependencies": {
     "babel-core": "6.26.0",

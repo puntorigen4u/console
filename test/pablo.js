@@ -2,6 +2,7 @@ const console_ = require('../lib/index');
 
 (async () => {
     // testing code here
+    //let display = new console_({ silent:false, config:{ colors:false } });
     let display = new console_({ silent:false });
     //
     display.clear();
