@@ -1,7 +1,8 @@
 # Punto Origen OPEN Framework : ES6 Classes
+<sup>Note: you need to pass all arguments as an Object with keys.</sup>
 
 # API Reference
-Open_console: A class to help display information in the console.<br/><small>Note: You need to pass all arguments as an Object with keys.</small>
+Open_console: A class to help display information in the console.
 
 
 * [open_console](#module_open_console)
@@ -10,8 +11,8 @@ Open_console: A class to help display information in the console.<br/><small>Not
     * [.timeEnd(id)](#module_open_console+timeEnd)
     * [.setPrefix([prefix], [color])](#module_open_console+setPrefix)
     * [.clear()](#module_open_console+clear)
-    * [.out(message, [data], [color])](#module_open_console+out)
-    * [.outT(message, [data], [color])](#module_open_console+outT)
+    * [.out(message, [data], [color], [prefix])](#module_open_console+out)
+    * [.outT(message, [data], [color], [prefix])](#module_open_console+outT)
     * [.title(title, [color], [titleColor], [config])](#module_open_console+title)
     * [.table(title, data, [struct_sort], [color])](#module_open_console+table)
 
@@ -68,7 +69,7 @@ Clears the console screen
 **Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
 <a name="module_open_console+out"></a>
 
-### open_console.out(message, [data], [color])
+### open_console.out(message, [data], [color], [prefix])
 Output a message to the console screen, with an optional var with data
 
 **Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
@@ -78,10 +79,11 @@ Output a message to the console screen, with an optional var with data
 | message | <code>String</code> | message to output |
 | [data] | <code>Object</code> | var dump to include in output |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
+| [prefix] | <code>String</code> | use this prefix instead of the configured one. To use color, use format 'prefix,color' |
 
 <a name="module_open_console+outT"></a>
 
-### open_console.outT(message, [data], [color])
+### open_console.outT(message, [data], [color], [prefix])
 Output a message to the console screen with timestamp, and an optional var with data
 
 **Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
@@ -91,6 +93,7 @@ Output a message to the console screen with timestamp, and an optional var with 
 | message | <code>String</code> | message to output |
 | [data] | <code>Object</code> | var dump to include in output |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
+| [prefix] | <code>String</code> | use this prefix instead of the configured one. To use color, use format 'prefix,color' |
 
 <a name="module_open_console+title"></a>
 

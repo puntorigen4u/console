@@ -1,5 +1,5 @@
 /**
-* Open_console: A class to help display information in the console.<br/><small>Note: You need to pass all arguments as an Object with keys.</small>
+* Open_console: A class to help display information in the console.
 * @name 	open_console
 * @module 	open_console
 **/
@@ -81,17 +81,31 @@ export default class open_console {
 	* @param 		{String}	message		- message to output
 	* @param 		{Object}	[data]		- var dump to include in output
 	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
+	* @param 		{String}	[prefix]	- use this prefix instead of the configured one. To use color, use format 'prefix,color'
 	*/
-	out({ message=this.throwIfMissing('message'),data,color='white' }={}) {
+	out({ message=this.throwIfMissing('message'),data,color='white', prefix='' }={}) {
 		let msg = message, colors = require('colors/safe');
+		let used_prefix = this.config.prefix;
+		if (prefix!='') {
+			// use temporal given prefix
+			if (prefix.split(',').length>0) {
+				let txt = `[${prefix.split(',')[0]}] `;
+				let colors = require('colors/safe');
+				used_prefix = colors[prefix.split(',')[1]](txt);
+			} else {
+				let txt = `[${prefix}] `;
+				used_prefix = txt;
+			}
+		}
+		//
 		if (!this.config.silent) {
 			if (this.config.colors && msg.indexOf('error:')!=-1) {
-				this.config.console.error(this.config.prefix + colors.red(msg));
+				this.config.console.error(used_prefix + colors.red(msg));
 			} else if (msg!='') {
 				if (this.config.colors && color in colors) {
-					this.config.console.log(this.config.prefix + colors[color](msg));
+					this.config.console.log(used_prefix + colors[color](msg));
 				} else {
-					this.config.console.log(this.config.prefix + msg);
+					this.config.console.log(used_prefix + msg);
 				}
 			}
 			// data output
@@ -106,8 +120,9 @@ export default class open_console {
 	* @param 		{String}	message		- message to output
 	* @param 		{Object}	[data]		- var dump to include in output
 	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
+	* @param 		{String}	[prefix]	- use this prefix instead of the configured one. To use color, use format 'prefix,color'
 	*/
-	outT({ message=this.throwIfMissing('message'),data,color='white' }={}) {
+	outT({ message=this.throwIfMissing('message'),data,color='white', prefix='' }={}) {
 		let msg = message, colors = require('colors/safe');
 		if (!this.config.silent) {
 			// timestamp prefix
@@ -127,13 +142,13 @@ export default class open_console {
 			let timeStamp = `[${hr}:${min}:${sec}]: ${msg.trim()}`;
 			// output
 			if (this.config.colors && data && color) {
-				this.out({ message:timeStamp, data:data, color:color });
+				this.out({ message:timeStamp, data:data, color:color, prefix:prefix });
 			} else if (data) {
-				this.out({ message:timeStamp, data:data });
+				this.out({ message:timeStamp, data:data, prefix:prefix });
 			} else if (this.config.colors && color) {
-				this.out({ message:timeStamp, color:color });
+				this.out({ message:timeStamp, color:color, prefix:prefix });
 			} else {
-				this.out({ message:timeStamp });
+				this.out({ message:timeStamp, prefix:prefix });
 			}
 		}
 	}
