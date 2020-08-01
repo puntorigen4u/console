@@ -88,7 +88,7 @@ export default class open_console {
 		let used_prefix = this.config.prefix;
 		if (prefix!='') {
 			// use temporal given prefix
-			if (prefix.split(',').length>0) {
+			if (prefix.split(',').length>1) {
 				let txt = `[${prefix.split(',')[0]}] `;
 				let colors = require('colors/safe');
 				used_prefix = colors[prefix.split(',')[1]](txt);
