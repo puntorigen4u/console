@@ -49,22 +49,22 @@ export default class open_console {
 	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
 	* @param 		{String}	[prefix]	- use this prefix instead of the configured one. To use color, use format 'prefix,color'
 	*/
-	timeEnd({ id=this.throwIfMissing('id'), color='white', data, prefix }={}) {
+	timeEnd({ id=this.throwIfMissing('id'), color='white', data, prefix, time=false }={}) {
 		if (id in this.time_table) {
 			let ms = new Date().getTime() - this.time_table[id].getTime();
 			let message = `time for '${id}': ${ms}ms`;
 			// output
 			if (this.config.colors && data && color) {
-				this.out({ message, data, color, prefix });
+				(time)?this.outT({ message, data, color, prefix }):this.out({ message, data, color, prefix });
 			} else if (data) {
-				this.out({ message, data, prefix });
+				(time)?this.outT({ message, data, prefix }):this.out({ message, data, prefix });
 			} else if (this.config.colors && color) {
-				this.out({ message, color, prefix });
+				(time)?this.outT({ message, color, prefix }):this.out({ message, color, prefix });
 			} else {
-				this.out({ message, prefix });
+				(time)?this.outT({ message, prefix }):this.out({ message, prefix });
 			}
 		} else {
-			this.console.outT({ message:`error: time() hasn't being called for ${id}` });
+			(time)?this.outT({ message:`error: time() hasn't being called for ${id}` }):this.out({ message:`error: time() hasn't being called for ${id}` });
 		}
 		delete this.time_table[id];
 	}
