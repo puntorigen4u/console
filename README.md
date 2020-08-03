@@ -8,7 +8,7 @@ Open_console: A class to help display information in the console.
 * [open_console](#module_open_console)
     * [.setSilent(value)](#module_open_console+setSilent)
     * [.time(id)](#module_open_console+time)
-    * [.timeEnd(id)](#module_open_console+timeEnd)
+    * [.timeEnd(id, [data], [color], [prefix])](#module_open_console+timeEnd)
     * [.setPrefix([prefix], [color])](#module_open_console+setPrefix)
     * [.clear()](#module_open_console+clear)
     * [.out(message, [data], [color], [prefix])](#module_open_console+out)
@@ -40,7 +40,7 @@ Calls timer start
 
 <a name="module_open_console+timeEnd"></a>
 
-### open_console.timeEnd(id)
+### open_console.timeEnd(id, [data], [color], [prefix])
 Calls timer end
 
 **Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
@@ -48,6 +48,9 @@ Calls timer end
 | Param | Type | Description |
 | --- | --- | --- |
 | id | <code>String</code> | key ID to measure and show timming for. |
+| [data] | <code>Object</code> | var dump to include in output |
+| [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
+| [prefix] | <code>String</code> | use this prefix instead of the configured one. To use color, use format 'prefix,color' |
 
 <a name="module_open_console+setPrefix"></a>
 

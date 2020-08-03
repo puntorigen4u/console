@@ -19,6 +19,7 @@ export default class open_console {
 			}
 		};
 		this.config = {...def_config,...config};
+		this.time_table = {};
 		if (this.config.prefix!='') {
 			this.config.prefix = `[${this.config.prefix}] `;
 		}
@@ -37,17 +38,35 @@ export default class open_console {
 	* @param 		{String}	id 	- key ID to measure
 	*/
 	time({ id=this.throwIfMissing('id') }={}) {
-		this.config.console.time(id);
-		//console.time(id);
+		//let tmp = new Date().getTime() - this.x_flags.watchdog.start.getTime();
+		this.time_table[id]=new Date();
 	}
 
 	/**
 	* Calls timer end
-	* @param 		{String}	id 	- key ID to measure and show timming for.
+	* @param 		{String}	id 			- key ID to measure and show timming for.
+	* @param 		{Object}	[data]		- var dump to include in output
+	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
+	* @param 		{String}	[prefix]	- use this prefix instead of the configured one. To use color, use format 'prefix,color'
 	*/
-	timeEnd({ id=this.throwIfMissing('id') }={}) {
-		this.config.console.timeEnd(id);
-		//console.timeEnd(id);
+	timeEnd({ id=this.throwIfMissing('id'), color='white', data, prefix }={}) {
+		if (id in this.time_table) {
+			let ms = new Date().getTime() - this.time_table[id].getTime();
+			let message = `time for '${id}': ${ms}ms`;
+			// output
+			if (this.config.colors && data && color) {
+				this.out({ message, data, color, prefix });
+			} else if (data) {
+				this.out({ message, data, prefix });
+			} else if (this.config.colors && color) {
+				this.out({ message, color, prefix });
+			} else {
+				this.out({ message, prefix });
+			}
+		} else {
+			this.console.outT({ message:`error: time() hasn't being called for ${id}` });
+		}
+		delete this.time_table[id];
 	}
 
 	/**
