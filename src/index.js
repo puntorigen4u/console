@@ -63,10 +63,11 @@ export default class open_console {
 			} else {
 				(time)?this.outT({ message, prefix }):this.out({ message, prefix });
 			}
+			delete this.time_table[id];
 		} else {
 			(time)?this.outT({ message:`error: time() hasn't being called for ${id}` }):this.out({ message:`error: time() hasn't being called for ${id}` });
 		}
-		delete this.time_table[id];
+		
 	}
 
 	/**
@@ -134,7 +135,9 @@ export default class open_console {
 			}
 			// data output
 			if (data) {
-				this.config.console.log('console.out():var=',data);
+				let util = require('util');
+				let edata = util.inspect(data, false,null,true);
+				this.config.console.log('console.out():var=',edata);
 			}
 		}
 	}
