@@ -11,14 +11,14 @@
   ],
   "license": "MIT",
   "author": "Pablo Schaffner",
-  "homepage": "http://github.com/puntorigen/console.git",
+  "homepage": "http://github.com/puntorigen4u/console.git",
   "repository": {
     "type": "git",
-    "url": "http://github.com/puntorigen/console.git"
+    "url": "http://github.com/puntorigen4u/console.git"
   },
   "bugs": {
     "mail": "pablo@puntorigen.com",
-    "url": "http://github.com/puntorigen/console/issues"
+    "url": "http://github.com/puntorigen4u/console/issues"
   },
   "main": "lib/index.js",
   "scripts": {
