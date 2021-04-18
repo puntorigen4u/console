@@ -118,12 +118,12 @@ export default class open_console {
 				used_prefix = txt;
 			}
 		}
-		let resp = ora({text:used_prefix+message, color}).start();
+		let resp = ora({text:message, color, prefixText:used_prefix}).start();
 		return {
-			start: ()=>{ resp.start(); },
-			text: (x)=>{ resp.text = used_prefix+x; },
-			succeed: (x)=>{ resp.succeed(used_prefix+x); },
-			fail: (x)=>{ resp.fail(used_prefix+x); },
+			start: (x)=>{ resp.start(x); },
+			text: (x)=>{ resp.text = x; },
+			succeed: (x)=>{ resp.succeed(x); },
+			fail: (x)=>{ resp.fail(x); },
 			stop: ()=>{ resp.stop(); }
 		};
 	}
