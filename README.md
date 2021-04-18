@@ -11,6 +11,7 @@ Open_console: A class to help display information in the console.
     * [.timeEnd(id, [data], [color], [prefix])](#module_open_console+timeEnd)
     * [.setPrefix([prefix], [color])](#module_open_console+setPrefix)
     * [.clear()](#module_open_console+clear)
+    * [.spinner(message, [color], [prefix])](#module_open_console+spinner) ⇒ <code>Ora</code>
     * [.out(message, [data], [color], [prefix])](#module_open_console+out)
     * [.outT(message, [data], [color], [prefix])](#module_open_console+outT)
     * [.title(title, [color], [titleColor], [config])](#module_open_console+title)
@@ -70,6 +71,19 @@ Sets output prefix
 Clears the console screen
 
 **Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
+<a name="module_open_console+spinner"></a>
+
+### open_console.spinner(message, [color], [prefix]) ⇒ <code>Ora</code>
+Outputs an ora spinner with the given message, used prefix and color.
+
+**Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| message | <code>String</code> | message to output |
+| [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
+| [prefix] | <code>String</code> | use this prefix instead of the configured one. To use color, use format 'prefix,color' |
+
 <a name="module_open_console+out"></a>
 
 ### open_console.out(message, [data], [color], [prefix])

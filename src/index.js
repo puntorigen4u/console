@@ -97,6 +97,32 @@ export default class open_console {
 	}
 
 	/**
+	* Outputs an ora spinner with the given message, used prefix and color.
+	* @param 		{String}	message		- message to output
+	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
+	* @param 		{String}	[prefix]	- use this prefix instead of the configured one. To use color, use format 'prefix,color'
+	* @return 		{Ora}
+	*/
+	spinner({ message=this.throwIfMissing('message'),color='white', prefix='' }={}) {
+		let ora = require('ora');
+		let msg = message;
+		let used_prefix = this.config.prefix;
+		if (prefix!='') {
+			// use temporal given prefix
+			if (prefix.split(',').length>1) {
+				let pref = prefix.split(',');
+				let txt = `[${pref[0]}] `;
+				used_prefix = txt;
+			} else {
+				let txt = `[${prefix}] `;
+				used_prefix = txt;
+			}
+		}
+		let resp = ora({text:used_prefix+message, color}).start();
+		return resp;
+	}
+
+	/**
 	* Output a message to the console screen, with an optional var with data
 	* @param 		{String}	message		- message to output
 	* @param 		{Object}	[data]		- var dump to include in output
@@ -189,7 +215,7 @@ export default class open_console {
 	* @param 		{String} 	[config.align=center]	- aligns the title by its value: left,center,right
 	*/
 
-	title({ title=this.throwIfMissing('title'), color, titleColor, config={} }={}) {
+	title({ title=this.throwIfMissing('title'), color='white', titleColor, config={} }={}) {
 		if (!this.config.silent) {
 			const box = require('boxen'), colors = require('colors/safe');
 			let textc = (titleColor)?titleColor:color;
