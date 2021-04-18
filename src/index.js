@@ -101,7 +101,7 @@ export default class open_console {
 	* @param 		{String}	message		- message to output
 	* @param 		{String}	[color]		- black,red,green,yellow,blue,purple,cyan,white
 	* @param 		{String}	[prefix]	- use this prefix instead of the configured one. To use color, use format 'prefix,color'
-	* @return 		{Ora}
+	* @return 		{Object}				- Object similar to ora object with an additional text(x) method
 	*/
 	spinner({ message=this.throwIfMissing('message'),color='white', prefix='' }={}) {
 		let ora = require('ora');
@@ -119,7 +119,13 @@ export default class open_console {
 			}
 		}
 		let resp = ora({text:used_prefix+message, color}).start();
-		return resp;
+		return {
+			start: ()=>{ resp.start(); },
+			text: (x)=>{ resp.text = used_prefix+x; },
+			succeed: (x)=>{ resp.succeed(used_prefix+x); },
+			fail: (x)=>{ resp.fail(used_prefix+x); },
+			stop: ()=>{ resp.stop(); }
+		};
 	}
 
 	/**

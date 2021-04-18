@@ -11,7 +11,7 @@ Open_console: A class to help display information in the console.
     * [.timeEnd(id, [data], [color], [prefix])](#module_open_console+timeEnd)
     * [.setPrefix([prefix], [color])](#module_open_console+setPrefix)
     * [.clear()](#module_open_console+clear)
-    * [.spinner(message, [color], [prefix])](#module_open_console+spinner) ⇒ <code>Ora</code>
+    * [.spinner(message, [color], [prefix])](#module_open_console+spinner) ⇒ <code>Object</code>
     * [.out(message, [data], [color], [prefix])](#module_open_console+out)
     * [.outT(message, [data], [color], [prefix])](#module_open_console+outT)
     * [.title(title, [color], [titleColor], [config])](#module_open_console+title)
@@ -73,10 +73,11 @@ Clears the console screen
 **Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
 <a name="module_open_console+spinner"></a>
 
-### open_console.spinner(message, [color], [prefix]) ⇒ <code>Ora</code>
+### open_console.spinner(message, [color], [prefix]) ⇒ <code>Object</code>
 Outputs an ora spinner with the given message, used prefix and color.
 
 **Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
+**Returns**: <code>Object</code> - - Object similar to ora object with an additional text(x) method  
 
 | Param | Type | Description |
 | --- | --- | --- |
