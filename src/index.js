@@ -124,6 +124,8 @@ export default class open_console {
 			text: (x)=>{ resp.text = x; },
 			succeed: (x)=>{ resp.succeed(x); },
 			fail: (x)=>{ resp.fail(x); },
+			warn: (x)=>{ resp.warn(x); },
+			info: (x)=>{ resp.info(x); },
 			stop: ()=>{ resp.stop(); }
 		};
 	}
