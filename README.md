@@ -12,6 +12,7 @@ Open_console: A class to help display information in the console.
     * [.setPrefix([prefix], [color])](#module_open_console+setPrefix)
     * [.clear()](#module_open_console+clear)
     * [.spinner(message, [color], [prefix])](#module_open_console+spinner) ⇒ <code>Object</code>
+    * [.progress(format, [config], [prefix], [formatData])](#module_open_console+progress) ⇒ <code>Object</code>
     * [.out(message, [data], [color], [prefix])](#module_open_console+out)
     * [.outT(message, [data], [color], [prefix])](#module_open_console+outT)
     * [.title(title, [color], [titleColor], [config])](#module_open_console+title)
@@ -84,6 +85,21 @@ Outputs an ora spinner with the given message, used prefix and color.
 | message | <code>String</code> | message to output |
 | [color] | <code>String</code> | black,red,green,yellow,blue,purple,cyan,white |
 | [prefix] | <code>String</code> | use this prefix instead of the configured one. To use color, use format 'prefix,color' |
+
+<a name="module_open_console+progress"></a>
+
+### open_console.progress(format, [config], [prefix], [formatData]) ⇒ <code>Object</code>
+Returns an instance of cli-progress with the given total amount, format, and color.
+
+**Kind**: instance method of [<code>open\_console</code>](#module_open_console)  
+**Returns**: <code>Object</code> - - Object similar to cli-progress object with methods to create,update,remove progress bars  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| format | <code>String</code> | format of progress message. Example: 'Progress {bar} - {percentage} %' |
+| [config] | <code>Object</code> | options overwrite for cli-progress multibar config |
+| [prefix] | <code>String</code> | use this prefix instead of the configured one. To use color, use format 'prefix,color' |
+| [formatData] | <code>function</code> | function(data) expects a return of a modified data instance. Inside you can control the format presentation and vars used inside the format argument. You also have access to special keys (progress,value,total,bar,eta,percentage,...all your data keys) and helper functions (data.funcs.colors and data.funcs.symbols). |
 
 <a name="module_open_console+out"></a>
 

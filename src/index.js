@@ -131,6 +131,102 @@ export default class open_console {
 	}
 
 	/**
+	* Returns an instance of cli-progress with the given total amount, format, and color.
+	* @param 		{String}	format			- format of progress message. Example: 'Progress {bar} - {percentage} %'
+	* @param 		{Object}	[config]		- options overwrite for cli-progress multibar config
+	* @param 		{String}	[prefix]		- use this prefix instead of the configured one. To use color, use format 'prefix,color'
+	* @param 		{Function}	[formatData]	- function(data) expects a return of a modified data instance. Inside you can control the format presentation and vars used inside the format argument. You also have access to special keys (progress,value,total,bar,eta,percentage,...all your data keys) and helper functions (data.funcs.colors and data.funcs.symbols).
+	* @return 		{Object}					- Object similar to cli-progress object with methods to create,update,remove progress bars
+	*/
+	progress({ format=this.throwIfMissing('format'), formatData, prefix='', config={} }={}) {
+		let progress = require('cli-progress');
+		let extract = require('extractjs')();
+		let parent = this;
+		// usage 
+		/* 
+		let progresos = x_console.progress(format=`{bar} {pantalla}`, formatData=function(data){
+			//inherited fields: bar,percentage,eta,value,funcs (colors(func),symbols)
+			if (data.percentage<30) {
+				data.bar = data.funcs.colors.magenta(data.bar);
+			} else if (data.percentage<60) {
+				data.bar = data.funcs.colors.yellow(data.bar);
+			} else {
+				data.bar = data.funcs.colors.green(data.bar);
+			}
+			//sub test, changes the format of the progress dynamically
+			if (data.sub) {
+				data._format = `{bar} {pantalla} -> {sub}`;
+			}
+			return data;
+		});
+		// let uno = progresos.create(100,{ pantalla:'uno' })
+		// uno.update(3);
+		*/
+		let multibar = new progress.MultiBar({...{ 
+			clearOnComplete:false, 
+			hideCursor:false,
+			barCompleteChar: '\u2588',
+			barIncompleteChar: '\u2591',
+			barsize: 20,
+			format: function(options, params, payload) {
+				//const bar = options.barCompleteString.substr(0, Math.round(params.progress*options.barsize));
+				let ndata = { funcs:{ colors:require('colors/safe'),
+									  symbols:require('log-symbols') 
+									} 
+							};
+				let { BarFormat,TimeFormat } = require('cli-progress').Format;
+				ndata.percentage =  Math.floor(params.progress*100) + '';
+				ndata.bar = BarFormat(params.progress, options);
+				ndata.eta = TimeFormat(params.eta,options,1);
+				ndata.value = params.value;
+				ndata.total = params.total;
+				ndata.progress = params.progress;
+				ndata._format = format;
+				ndata = formatData(ndata);
+				// test changes
+				if (ndata._format!=format) {
+					// format changed!
+				}
+				//prefix
+				let used_prefix = parent.config.prefix;
+				if (prefix!='') {
+					// use temporal given prefix
+					if (prefix.split(',').length>1) {
+						let pref = prefix.split(',');
+						let txt = `[${pref[0]}] `;
+						used_prefix = txt;
+					} else {
+						let txt = `[${prefix}] `;
+						used_prefix = txt;
+					}
+				}
+				let resp = '';
+				if (used_prefix!='') resp += used_prefix;
+				//create resp from defined format
+				delete ndata.funcs;
+				let pattern = extract(ndata._format);
+				ndata = {...ndata,...payload};
+				resp += pattern.interpolate(ndata);
+				return resp;
+			}
+		},...config}, progress.Presets.rect);
+		return {
+			create: ({total,data={}}={})=>{ 
+				let x = multibar.create(total,0,data);
+				return {
+					update:({value,data}={})=>{
+						return x.update(value,data);
+					},
+					remove:()=>{ multibar.remove(x); },
+					raw:()=>x
+				}
+			},
+			raw: ()=>multibar,
+			stop: ()=>{ multibar.stop(); }
+		};
+	}
+
+	/**
 	* Output a message to the console screen, with an optional var with data
 	* @param 		{String}	message		- message to output
 	* @param 		{Object}	[data]		- var dump to include in output
