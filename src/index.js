@@ -217,6 +217,9 @@ export default class open_console {
 					update:({value,data}={})=>{
 						return x.update(value,data);
 					},
+					total:({total}={})=>{
+						x.setTotal(total);
+					},
 					remove:()=>{ multibar.remove(x); },
 					raw:()=>x
 				}
