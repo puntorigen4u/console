@@ -31,21 +31,19 @@ const console_ = require('../lib/index');
         }
         return data;
     }});
-    let principal = progress.create({ total:10 });
-    let principal2 = progress.create({ total:100 });
+    let barra1 = progress.create({ total:10 });
+    let barra2 = progress.create({ total:100 });
     let x=0;
-    let repite = setInterval(function() {
-        principal.update({ value:x, data:{
+    let repite = setInterval(()=>{
+        barra1.update({ value:x, data:{
             text:'hola'+x,
             file:'test'
         } });
-        principal2.update({ value:x*10, data:{
+        barra2.update({ value:x*10, data:{
             text:'segundo'+(x*10),
             file:'test'
         } });
-        if (x==11) {
-            //principal.remove();
-            //principal2.remove();
+        if (x<10) {
             clearInterval(repite);
             setTimeout(function() {
                 progress.stop();
