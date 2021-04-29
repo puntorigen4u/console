@@ -182,7 +182,9 @@ export default class open_console {
 				ndata.total = params.total;
 				ndata.progress = params.progress;
 				ndata._format = format;
+				ndata = {...payload,...ndata};
 				ndata = formatData(ndata);
+				delete ndata.funcs;
 				// test changes
 				if (ndata._format!=format) {
 					// format changed!
@@ -203,21 +205,20 @@ export default class open_console {
 				let resp = '';
 				if (used_prefix!='') resp += used_prefix;
 				//create resp from defined format
-				delete ndata.funcs;
+				
 				let pattern = extract(ndata._format);
-				ndata = {...ndata,...payload};
 				resp += pattern.interpolate(ndata);
 				return resp;
 			}
 		},...config}, progress.Presets.rect);
 		return {
-			create: ({total,data={}}={})=>{ 
+			create: (total,data)=>{ 
 				let x = multibar.create(total,0,data);
 				return {
-					update:({value,data}={})=>{
+					update:(value,data)=>{
 						return x.update(value,data);
 					},
-					total:({total}={})=>{
+					total:(total)=>{
 						x.setTotal(total);
 					},
 					remove:()=>{ multibar.remove(x); },

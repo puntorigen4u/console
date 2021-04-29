@@ -31,19 +31,19 @@ const console_ = require('../lib/index');
         }
         return data;
     }});
-    let barra1 = progress.create({ total:10 });
-    let barra2 = progress.create({ total:100 });
+    let barra1 = progress.create(10);
+    let barra2 = progress.create(100);
     let x=0;
     let repite = setInterval(()=>{
-        barra1.update({ value:x, data:{
+        barra1.update(x, {
             text:'hola'+x,
             file:'test'
-        } });
-        barra2.update({ value:x*10, data:{
+        });
+        barra2.update(x*10, {
             text:'segundo'+(x*10),
             file:'test'
-        } });
-        if (x<10) {
+        });
+        if (x>=10) {
             clearInterval(repite);
             setTimeout(function() {
                 progress.stop();
@@ -51,7 +51,7 @@ const console_ = require('../lib/index');
         } else {
             x+=1;
         }
-    },200);
+    },100);
     //
 
 })().catch(err => {
