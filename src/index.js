@@ -175,12 +175,15 @@ export default class open_console {
 									} 
 							};
 				let { BarFormat,TimeFormat } = require('cli-progress').Format;
+				const stopTime = params.stopTime || Date.now();
+    			const elapsedTime = Math.round((stopTime - params.startTime)/1000);
 				ndata.percentage =  Math.floor(params.progress*100) + '';
 				ndata.bar = BarFormat(params.progress, options);
 				ndata.eta = TimeFormat(params.eta,options,1);
 				ndata.value = params.value;
 				ndata.total = params.total;
 				ndata.progress = params.progress;
+				ndata.duration = TimeFormat(elapsedTime,options,1);
 				ndata._format = format;
 				ndata = {...payload,...ndata};
 				ndata = formatData(ndata);
