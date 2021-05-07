@@ -1,6 +1,6 @@
 {
   "name": "open_console",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Punto Origen OPEN - ES6 Console Class",
   "keywords": [
     "creador",
@@ -44,7 +44,7 @@
     "@rollup/plugin-babel": "^5.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "cross-env": "^7.0.2",
-    "jsdoc-to-markdown": "^6.0.1",
+    "jsdoc-to-markdown": "^7.0.0",
     "rollup": "^2.23.1"
   },
   "scarfSettings": {
