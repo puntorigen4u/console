@@ -1,5 +1,9 @@
-# Punto Origen OPEN Framework : ES6 Classes
-<sup>Note: you need to pass all arguments as an Object with keys.</sup>
+![open_console](https://user-images.githubusercontent.com/57605485/133296762-262590c8-d0b4-4637-a7ee-69cd1dc1819c.png)
+
+![lines](https://img.shields.io/tokei/lines/github/puntorigen4u/console)
+
+Complete ES6 Framework class for fast and easy usage of advanced console outputs<br/>
+Note you need to pass all arguments as an <i>object with keys</i>.
 
 # API Reference
 Open_console: A class to help display information in the console.
@@ -161,5 +165,4 @@ Shows data array as table in the console
 
 * * *
 
-&copy; 2020 Pablo Schaffner &lt;pablo@puntorigen.com&gt;.
-Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+&copy; 2020-2021 Pablo Schaffner &lt;pablo@puntorigen.com&gt;.
