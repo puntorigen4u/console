@@ -213,7 +213,7 @@ export default class open_console {
 				}
 				//prefix
 				let used_prefix = parent.config.prefix;
-				if (arg.prefix!='') {
+				if (arg.prefix && arg.prefix!='') {
 					// use temporal given prefix
 					if (arg.prefix.split(',').length>1) {
 						let pref = arg.prefix.split(',');
@@ -262,7 +262,7 @@ export default class open_console {
 	out(arg:{message:string,color?:Colors, prefix?:string, data?:any}={ message:null,color:'white',prefix:'',data:null}) {
 		let msg = arg.message, colors = require('colors/safe');
 		let used_prefix = this.config.prefix;
-		if (arg.prefix!='') {
+		if (arg.prefix && arg.prefix!='') {
 			// use temporal given prefix
 			if (arg.prefix.split(',').length>1) {
 				let pref = arg.prefix.split(',');
