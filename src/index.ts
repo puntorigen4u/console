@@ -126,7 +126,7 @@ export default class open_console {
 		let ora = require('ora');
 		let msg = arg.message;
 		let used_prefix = this.config.prefix;
-		if (arg.prefix!='') {
+		if (arg.prefix && arg.prefix!='') {
 			// use temporal given prefix
 			if (arg.prefix.split(',').length>1) {
 				let pref = arg.prefix.split(',');
