@@ -164,3 +164,4 @@ export default class open_console {
     throwIfMissing(name: any): void;
 }
 export {};
+//# sourceMappingURL=index.d.ts.map

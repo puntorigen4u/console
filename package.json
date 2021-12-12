@@ -1,7 +1,7 @@
 {
-  "name": "open_console",
+  "name": "@concepto/console",
   "version": "1.2.62",
-  "description": "Punto Origen OPEN - ES6 Console Class",
+  "description": "Concepto DSL - visually create and maintain modern node.js based apps (@console)",
   "keywords": [
     "creador",
     "puntorigen",

@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
       "declaration": true,
-      "declarationDir": "./lib"
+      "declarationDir": "./lib",
+      "declarationMap": true
     }
   }

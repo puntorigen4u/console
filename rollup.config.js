@@ -16,7 +16,8 @@ const config = {
     nodeResolve(),
     typescript({
         declaration: true,
-        declarationDir: "lib/"
+        declarationDir: "lib/",
+        declarationMap: true
     }),
     babel({
       presets: [

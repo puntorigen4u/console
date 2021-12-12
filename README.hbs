@@ -1,8 +1,17 @@
-![open_console](https://user-images.githubusercontent.com/57605485/133296762-262590c8-d0b4-4637-a7ee-69cd1dc1819c.png)
+<p align="center">
+  <a href="http://www.puntorigen.com/" target="blank"><img src="https://user-images.githubusercontent.com/57605485/144762579-7114f229-a01a-4afd-9a18-62ec3dbf3478.png" width="320" alt="Concepto DSL Logo" /></a>
+</p>
+<p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for visually building efficient and scalable nodejs based applications.</p>
+<p align="center">
+    <a href="https://www.npmjs.com/~concepto"><img src="https://img.shields.io/npm/v/@concepto/console.svg" alt="NPM Version" /></a>
+    <a href="https://www.npmjs.com/~concepto"><img src="https://img.shields.io/npm/l/@concepto/console.svg" alt="Package License" /></a>
+    <a href="https://www.npmjs.com/~concepto"><img src="https://img.shields.io/npm/dm/@concepto/console.svg" alt="NPM Downloads" /></a>
+    <a href="https://www.npmjs.com/~concepto" target="_blank"><img src="https://img.shields.io/tokei/lines/github/puntorigen4u/console"></a>
+    <a href="https://twitter.com/punt0rigen" target="_blank"><img src="https://img.shields.io/twitter/follow/punt0rigen.svg?style=social&label=Follow"></a>
+</p>
 
-![lines](https://img.shields.io/tokei/lines/github/puntorigen4u/console)
-
-Complete ES6 Framework class for fast and easy usage of advanced console outputs<br/>
+## Description
+Advanced ES6 console output class used within <a href="https://www.npmjs.com/package/@concepto/cli">Concepto DSL</a>
 Note you need to pass all arguments as an <i>object with keys</i>.
 
 # API Reference
