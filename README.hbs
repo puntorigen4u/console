@@ -11,7 +11,7 @@
 </p>
 
 ## Description
-Advanced ES6 console output class used within <a href="https://www.npmjs.com/package/@concepto/cli">Concepto DSL</a>
+Advanced ES6 console output class used within <a href="https://www.npmjs.com/package/@concepto/cli">Concepto DSL</a><br/>
 Note you need to pass all arguments as an <i>object with keys</i>.
 
 # API Reference
