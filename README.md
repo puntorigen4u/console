@@ -174,4 +174,4 @@ Shows data array as table in the console
 
 * * *
 
-&copy; 2020-2021 Pablo Schaffner &lt;pablo@puntorigen.com&gt;.
+&copy; 2020-2022 Pablo Schaffner &lt;pablo@puntorigen.com&gt;.
