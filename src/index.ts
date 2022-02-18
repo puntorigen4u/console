@@ -440,13 +440,15 @@ export default class open_console {
         const extractor = require('extractjs')()
         let tokens = Object.keys(def);
          for (let token of tokens) {
-            let ext_ = extractor(`${token}{text}${token}`,text_);
-            if (ext_.text) {
-                text_ = text_.replace(
-                    token+ext_.text+token,
-                    colors_[def[token]](ext_.text)
-                )
-            }
+			 for (let x of [1,2,3,4,5]) {			 
+				let ext_ = extractor(`${token}{text}${token}`,text_);
+				if (ext_.text) {
+					text_ = text_.replace(
+						token+ext_.text+token,
+						colors_[def[token]](ext_.text)
+					)
+				}
+			}
         }
         return text_;
     }
