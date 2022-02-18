@@ -16,9 +16,19 @@ interface Config {
     };
 }
 declare type Colors = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'purple' | 'cyan' | 'white';
+interface colorTokens {
+    '*'?: Colors;
+    '|'?: Colors;
+    '@'?: Colors;
+    '#'?: Colors;
+    '$'?: Colors;
+    '='?: Colors;
+    '!'?: Colors;
+}
 export default class open_console {
     config: Config;
     time_table: any;
+    colorTokens_: colorTokens;
     constructor(arg?: {
         silent?: boolean;
         prefix: string;
@@ -161,6 +171,9 @@ export default class open_console {
         color?: Colors;
         struct_sort?: string;
     }): void;
+    setColorTokens(colorTokens: colorTokens): void;
+    colorize(text: string): string;
+    isObjEmpty(obj: any): boolean;
     throwIfMissing(name: any): void;
 }
 export {};

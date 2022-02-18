@@ -17,9 +17,20 @@ interface Config {
 }
 type Colors = 'black'|'red'|'green'|'yellow'|'blue'|'purple'|'cyan'|'white';
 
+interface colorTokens {
+    '*'?:Colors,
+    '|'?:Colors,
+    '@'?:Colors,
+    '#'?:Colors,
+    '$'?:Colors,
+    '='?:Colors,
+    '!'?:Colors
+}
+
 export default class open_console {
     config:Config;
     time_table:any;
+	colorTokens_:colorTokens={};
 
 	constructor(arg:{silent?:boolean, prefix:string, config:object}={prefix:'',config:{}}) {
 
@@ -101,7 +112,7 @@ export default class open_console {
 			let colors = require('colors/safe');
 			this.config.prefix = colors[arg.color](txt);
 		} else {
-			this.config.prefix = `[${this.config.prefix}] `;
+			this.config.prefix = this.colorize(`[${this.config.prefix}] `);
 		}
 	}
 
@@ -139,12 +150,12 @@ export default class open_console {
 		}
 		let resp = ora({text:arg.message, color:arg.color, prefixText:used_prefix}).start();
 		return {
-			start: (x)=>{ resp.start(x); },
-			text: (x)=>{ resp.text = x; },
-			succeed: (x)=>{ resp.succeed(x); },
-			fail: (x)=>{ resp.fail(x); },
-			warn: (x)=>{ resp.warn(x); },
-			info: (x)=>{ resp.info(x); },
+			start: (x)=>{ resp.start(this.colorize(x)); },
+			text: (x)=>{ resp.text = this.colorize(x); },
+			succeed: (x)=>{ resp.succeed(this.colorize(x)); },
+			fail: (x)=>{ resp.fail(this.colorize(x)); },
+			warn: (x)=>{ resp.warn(this.colorize(x)); },
+			info: (x)=>{ resp.info(this.colorize(x)); },
 			stop: ()=>{ resp.stop(); }
 		};
 	}
@@ -286,7 +297,7 @@ export default class open_console {
 				if (this.config.colors && arg.color in colors) {
 					this.config.console.log(used_prefix + colors[arg.color](msg));
 				} else {
-					this.config.console.log(used_prefix + msg);
+					this.config.console.log(this.colorize(used_prefix + msg));
 				}
 			}
 			// data output
@@ -322,7 +333,7 @@ export default class open_console {
 			if (sec < 10) {
 			    sec = "0" + sec;
 			}
-			let timeStamp = `[${hr}:${min}:${sec}]: ${msg.trim()}`;
+			let timeStamp = this.colorize(`[${hr}:${min}:${sec}]: ${msg.trim()}`);
 			// output
 			if (this.config.colors && arg.data && arg.color) {
 				this.out({message:timeStamp, data:arg.data, color:arg.color, prefix:arg.prefix});
@@ -413,6 +424,38 @@ export default class open_console {
 			}
 		}
 	}
+
+	setColorTokens(colorTokens:colorTokens) {
+        this.colorTokens_ = colorTokens;
+    }
+
+    colorize(text:string) {
+        /**
+         * colorize(`this is a *red* example |car| with #blue#`,{ '*':'red', '|':'yellow', '#':'blue' })
+         */
+        const def = this.colorTokens_;
+        let text_ = text;
+        if (this.isObjEmpty(def)) return text_;
+        const colors_ = require('colors/safe')
+        const extractor = require('extractjs')()
+        let tokens = Object.keys(def);
+         for (let token of tokens) {
+            let ext_ = extractor(`${token}{text}${token}`,text_);
+            if (ext_.text) {
+                text_ = text_.replace(
+                    token+ext_.text+token,
+                    colors_[def[token]](ext_.text)
+                )
+            }
+        }
+        return text_;
+    }
+
+	isObjEmpty(obj) {
+        //fastest algorithm
+        for (let x in obj) return false;
+        return true;
+    }
 
 	// ********************
 	// private methods
