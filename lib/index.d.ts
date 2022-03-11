@@ -1,9 +1,9 @@
 /**
-* Open_console: A class to help display information in the console.
-* @name 	open_console
-* @module 	open_console
+* x_console: A class to help display or interact with information in the console.
+* @name 	x_console
+* @module 	x_console
 **/
-interface Config {
+export interface Config {
     silent: boolean | void;
     prefix: string;
     colors: boolean;
@@ -15,8 +15,8 @@ interface Config {
         default: boolean;
     };
 }
-declare type Colors = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'purple' | 'cyan' | 'white';
-interface colorTokens {
+export declare type Colors = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'purple' | 'cyan' | 'white';
+export interface colorTokens {
     '*'?: Colors;
     '|'?: Colors;
     '@'?: Colors;
@@ -176,5 +176,4 @@ export default class open_console {
     isObjEmpty(obj: any): boolean;
     throwIfMissing(name: any): void;
 }
-export {};
 //# sourceMappingURL=index.d.ts.map

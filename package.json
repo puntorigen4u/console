@@ -1,6 +1,6 @@
 {
   "name": "@concepto/console",
-  "version": "1.2.67",
+  "version": "1.2.68",
   "description": "Concepto DSL - visually create and maintain modern node.js based apps (@console)",
   "keywords": [
     "creador",
