@@ -16,6 +16,7 @@ export interface Config {
     };
 }
 export declare type Colors = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'purple' | 'cyan' | 'white';
+export declare type Spinners = 'dots' | 'line' | 'line2' | 'pipe' | 'star' | 'star2' | 'flip' | 'growVertical' | 'growHorizontal' | 'balloon' | 'balloon2' | 'triangle' | 'arc' | 'toggle3' | 'bouncingBall' | 'smiley' | 'monkey' | 'hearts' | 'clock' | 'earth' | 'moon' | 'runner' | 'weather' | 'fingerDance';
 export interface colorTokens {
     '*'?: Colors;
     '|'?: Colors;
@@ -86,6 +87,7 @@ export default class open_console {
         message: string;
         color?: Colors;
         prefix?: string;
+        spinner?: Spinners;
     }): {
         start: (x: any) => void;
         text: (x: any) => void;

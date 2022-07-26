@@ -17,6 +17,8 @@ export interface Config {
 }
 export type Colors = 'black'|'red'|'green'|'yellow'|'blue'|'purple'|'cyan'|'white';
 
+export type Spinners = 'dots'|'line'|'line2'|'pipe'|'star'|'star2'|'flip'|'growVertical'|'growHorizontal'|'balloon'|'balloon2'|'triangle'|'arc'|'toggle3'|'bouncingBall'|'smiley'|'monkey'|'hearts'|'clock'|'earth'|'moon'|'runner'|'weather'|'fingerDance';
+
 export interface colorTokens {
     '*'?:Colors,
     '|'?:Colors,
@@ -133,7 +135,7 @@ export default class open_console {
 	* @param 		{String}	[prefix]	- use this prefix instead of the configured one. To use color, use format 'prefix,color'
 	* @return 		{Object}				- Object similar to ora object with an additional text(x) method
 	*/
-	spinner(arg:{message:string,color?:Colors, prefix?:string}={message:'',color:'white',prefix:''}) {
+	spinner(arg:{message:string,color?:Colors, prefix?:string, spinner?:Spinners}={message:'',color:'white',prefix:'',spinner:'dots'}) {
 		let ora = require('ora');
 		let msg = arg.message;
 		let used_prefix = this.config.prefix;
@@ -148,7 +150,7 @@ export default class open_console {
 				used_prefix = txt;
 			}
 		}
-		let resp = ora({text:arg.message, color:arg.color, prefixText:used_prefix}).start();
+		let resp = ora({text:arg.message, color:arg.color, prefixText:used_prefix, spinner:arg.spinner }).start();
 		return {
 			start: (x)=>{ resp.start(this.colorize(x)); },
 			text: (x)=>{ resp.text = this.colorize(x); },
